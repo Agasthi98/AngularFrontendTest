@@ -1,0 +1,64 @@
+.container {
+  min-height: 30vh;
+  min-width: 70vw;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+  .header {
+    color: #c45d2a;
+  }
+
+  .hr-line {
+    height: 2px;
+    background-color: #c45d2a;
+    ;
+  }
+}
+
+.dropdown-list-image {
+  position: relative;
+  height: 2.5rem;
+  width: 4.5rem;
+}
+
+.dropdown-list-image img {
+  height: 2rem;
+  width: 2rem;
+}
+
+.btn-light {
+  color: #2cdd9b;
+  background-color: #e5f7f0;
+  border-color: #d8f7eb;
+}
+
+.description {
+  width: 37.5rem;
+}
+
+.title {
+  max-width: 20rem;
+  font-weight: 500;
+  word-wrap: break-word;
+  cursor: pointer;
+}
+
+.close-button {
+  cursor: pointer;
+}
+
+
+.notification-bar {
+  border: 1px solid;
+  border-radius: 5px;
+
+  .notification-Title {
+    color: black;
+    font-size: 15px;
+  }
+
+  .Notification-description {
+    font-size: 12px;
+  }
+}

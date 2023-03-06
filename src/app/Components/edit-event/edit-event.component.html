@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Edit event</h2>
+<mat-dialog-content class="mat-typography">
+     <form [formGroup]="simpleForm">
+       <div class="row">
+         <div class="col-6">
+           <label for="exampleFormControlInput1">Event Title</label>
+           <input type="text" class="form-control" placeholder="" formControlName="Title">
+         </div>
+         <div class="col-6">
+           <label for="exampleFormControlInput1">Date</label>
+           <input id="startDate" class="form-control" type="date" formControlName="Date" />
+         </div>
+       </div>
+     </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button type="button" class="btn btn-cancel btn-sm mt-4 mr-2" mat-dialog-close>Cancel</button>
+  <button type="button" class="btn btn-primary btn-sm mt-4 ml-2" [mat-dialog-close]="true">Update</button>
+</mat-dialog-actions>
