@@ -71,6 +71,9 @@ export class HomeComponent implements OnInit {
     date.setSeconds(now.getSeconds()); // set the seconds of the selected date to the current seconds
     formData.Date = date.toISOString(); // convert the date to ISO format with UTC
 
+    /*
+    Add an event
+    */
     this.eventService.AddEvent(this.simpleForm.value).subscribe({
       next: (res) => {
         this.toastService.success('Event added succesfully !', {
@@ -87,6 +90,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  /*
+  Get all events
+  */
   getAllEvents() {
     this.eventService.GetAllEvents().subscribe((res) => {
       this.events = res;
@@ -106,6 +112,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  /*
+  Delete confirm popup box
+  */
   deleteEvent(deleteItem: any) {
     const dialogRef = this.dialog.open(DeleteConfirmDialogBoxComponent, {
       width: '400px',
@@ -114,6 +123,9 @@ export class HomeComponent implements OnInit {
     this.realoadOnSuccess(dialogRef)
   }
 
+  /*
+  Reload
+  */
   private realoadOnSuccess(dialogRef:MatDialogRef<any>){
     dialogRef.afterClosed().subscribe({
       next:(value:any) => {
@@ -124,6 +136,9 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  /*
+  Open update popup box
+  */
   openDialog(item: any) {
     const dialogRef = this.dialog.open(EditEventComponent, {
       width: '600px',

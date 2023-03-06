@@ -18,6 +18,9 @@ export class DeleteConfirmDialogBoxComponent {
     console.log(this.data);
   }
 
+  /*
+  Delete an event
+  */
   deleteEvent() {
     this.eventService.deleteRecord(this.data.id).subscribe({
       next: (value) => {

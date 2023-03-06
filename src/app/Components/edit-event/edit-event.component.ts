@@ -27,11 +27,6 @@ export class EditEventComponent {
   }
 
   createform() {
-    // this.simpleForm = this.fb.group({
-    //   Title: [''],
-    //   Date: [''],
-    // });
-
     this.simpleForm = new FormGroup({
       Title: new FormControl('',Validators.required),
       Date: new FormControl('',[Validators.required])
@@ -39,13 +34,19 @@ export class EditEventComponent {
         this.setItemData()
   }
 
+  /*
+    Set values to update
+  */
   setItemData() {
     this.simpleForm.setValue({
       Title: this.data?.Title,
-      Date: this.data?.Date,
+      Date: this.data.Date,
     });
   }
 
+  /*
+    Update an event
+  */
   submitEvent(){
     const data = this.simpleForm.value
     this.eventService.updateEventData(this.data.id,data).subscribe({
