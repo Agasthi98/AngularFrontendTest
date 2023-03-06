@@ -2,8 +2,9 @@ import { EventService } from './../../Service/event.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { EditEventComponent } from '../edit-event/edit-event.component';
+import { DeleteConfirmDialogBoxComponent } from '../delete-confirm-dialog-box/delete-confirm-dialog-box.component';
 
 @Component({
   selector: 'app-home',
@@ -105,28 +106,29 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  deleteEvent(eventID: any) {
-    this.eventService.deleteRecord(eventID.id).subscribe(
-      (response) => {
-        console.log('Record deleted successfully');
-        this.toastService.error('Event deleted succesfully !', {
-          className: 'notification-error',
-          position: 'top-right',
-        });
-        this.simpleForm.reset();
-        this.getAllEvents();
-      },
-      (error) => {
-        console.log('Error while deleting record', error);
-      }
-    );
+  deleteEvent(deleteItem: any) {
+    const dialogRef = this.dialog.open(DeleteConfirmDialogBoxComponent, {
+      width: '400px',
+      data: deleteItem,
+    });
+    this.realoadOnSuccess(dialogRef)
   }
 
-  openDialog() {
+  private realoadOnSuccess(dialogRef:MatDialogRef<any>){
+    dialogRef.afterClosed().subscribe({
+      next:(value:any) => {
+        if(value !== true){
+          this.getAllEvents()
+        }
+      }
+    })
+  }
+
+  openDialog(item: any) {
     const dialogRef = this.dialog.open(EditEventComponent, {
       width: '600px',
+      data: item,
     });
-
-
+    this.realoadOnSuccess(dialogRef)
   }
 }

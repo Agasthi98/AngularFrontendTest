@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditEventComponent } from './Components/edit-event/edit-event.component';
+import { DeleteConfirmDialogBoxComponent } from './Components/delete-confirm-dialog-box/delete-confirm-dialog-box.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,10 @@ import { EditEventComponent } from './Components/edit-event/edit-event.component
     DhammaSchoolComponent,
     UserProfileComponent,
     EditEventComponent,
+    DeleteConfirmDialogBoxComponent,
   ],
   imports: [
+    MatTooltipModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

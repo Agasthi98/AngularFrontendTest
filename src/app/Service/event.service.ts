@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 export class EventService {
   constructor(private http: HttpClient) {}
 
-  AddEvent(userObj: any) {
-    return this.http.post<any>(` http://localhost:8000/event`, userObj);
+  AddEvent(event: any) {
+    return this.http.post<any>(` http://localhost:8000/event`, event);
   }
 
   GetAllEvents() {
@@ -21,7 +21,7 @@ export class EventService {
     return this.http.delete(url);
   }
 
-  getEventData(eventId: number) {
-    return this.http.get(`https://example.com/users/${eventId}`);
+  updateEventData(id: number, data: any): Observable<any>{
+    return this.http.put(`http://localhost:8000/event/${id}`, data);
   }
 }
